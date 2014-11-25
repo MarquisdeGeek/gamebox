@@ -337,8 +337,7 @@ public:
     client.println("<!DOCTYPE HTML>");
     client.println("<html>");
     // add a meta refresh tag, so the browser pulls again every 5 seconds:
-    client.println("<meta http-equiv=\"refresh\" content=\"5\">");
-    // output the value of each analog input pin
+    //client.println("<meta http-equiv=\"refresh\" content=\"5\">");
     
     client.println("<h1>Arduino Runner</h1>");
     
@@ -354,11 +353,6 @@ public:
     client.print(player.score);
     client.println("<br />");
      
-    for(int i=0;i<16;++i) {
-      client.print(g_RunnerMapData[(state.pos+i)&0xf] ? ((i%2==0)?"O":"0") : " ");
-    }
-    client.println("<br />");
-    
     client.println("</html>");
    }
 #endif
