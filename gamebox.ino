@@ -28,7 +28,7 @@ LiquidCrystal lcd(2, 3, 5, 6, 7, 8);
 //
 #if GAMEBOX_ETHERNET
 byte mac[] = { 0x90, 0xA2, 0xda, 0x0d, 0x62, 0x9c };
-IPAddress ip(172, 31, 99, 178);
+IPAddress ip(192, 168, 0, 82);
 EthernetServer server(80);
 #endif
 
