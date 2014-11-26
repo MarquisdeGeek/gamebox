@@ -1,9 +1,8 @@
 
 + Prevent the player from hammering the jump button to stay in the air all the time
++ Add pressed and released methods to stop re-triggers when button held down. e.g. menu
 
 + Write second game
-+ Use pGame, not game, so allow other games to co-exist
-+ Write a menu system to switch between games
 
 Q. Can the LCD handle UDGs?
 

@@ -14,13 +14,13 @@
 #include "gamebox.h"
 #include "menu.h"
 #include "runner.h"
+#include "game2.h"
 
 
 //
 // Globals
 //
 GameBox     gamebox;
-GameRunner  game;
 GameBoxMenu menu;
 
 
@@ -191,7 +191,8 @@ void setup() {
 
   gamebox.init();
   menu.addGame(new GameRunner());
-  
+  menu.addGame(new GameUnknown());
+
   gamebox.startMenu();
 }
 
