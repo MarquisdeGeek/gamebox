@@ -50,11 +50,13 @@ class GameRunner : public GBGame {
 public:
 
   GameRunner();
-  
-  void  	newGame();  
-  void  	draw() const;  
-  void  	update();
-  boolean 	isGameOver() const;
+  virtual const char *  getName();
+
+  virtual void  	newGame();  
+  virtual void  	draw() const;  
+  virtual void  	update();
+
+  boolean 	        isGameOver() const;
     
 #if  GAMEBOX_ETHERNET   
    void renderWebPage(EthernetClient &client) const;

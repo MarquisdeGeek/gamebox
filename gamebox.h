@@ -3,6 +3,13 @@
 
 class GBGame {
 public:
+  virtual void newGame() {} 
+  virtual const char *  getName() = 0;
+#if GAMEBOX_ETHERNET
+  virtual void renderWebPage(EthernetClient &client){}
+#endif
+  virtual void draw() const   {}
+  virtual void update()       {}
 };
 
 
@@ -14,7 +21,19 @@ public:
   void playTune(const int *pMelody) const;    
   boolean isLeftButtonDown() const;
   boolean isRightButtonDown() const;
+  //
+#if GAMEBOX_ETHERNET  
+  void renderWebPage(EthernetClient &client);
+#endif  
+  void draw() const;
+  void update();
   
+  //
+  void startMenu();
+  void startGame(GBGame *pGame);
+
+protected:
+  GBGame *    pCurrentGame; 
 };
 
 #endif	// GAMEBOX_HPP

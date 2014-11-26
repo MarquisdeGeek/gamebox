@@ -144,6 +144,10 @@ namespace {
       highScore = 0;
   }
   
+  const char *  GameRunner::getName() {
+    return "Arduino Runner";
+  }
+  
   void  GameRunner::newGame() {
     int tuneData[] = {GB_NOTE_C4,4 ,  GB_NOTE_G3, 8,  GB_NOTE_G3,8, GB_NOTE_A3,4, GB_NOTE_G3,2, GB_NOTE_B3,4, GB_NOTE_C4,4, 0};
 
@@ -175,6 +179,9 @@ namespace {
     if (isGameOver()) {
        if (gamebox.isLeftButtonDown()) {
          newGame();
+       }
+       if (gamebox.isRightButtonDown()) {
+         gamebox.startMenu();
        }
        return;
     }

@@ -12,7 +12,17 @@
 #include <Ethernet.h>
 #include "settings.h"
 #include "gamebox.h"
+#include "menu.h"
 #include "runner.h"
+
+
+//
+// Globals
+//
+GameBox     gamebox;
+GameRunner  game;
+GameBoxMenu menu;
+
 
 //
 // Hardware pins
@@ -104,11 +114,27 @@ const int GB_NOTE_C6 = 1047;
     return digitalRead(pinButtonRight);
   }
   
-//
-// Globals
-//
-GameBox     gamebox;
-GameRunner  game;
+  void GameBox::startMenu() {
+    startGame(&menu);
+  }
+  
+  void GameBox::startGame(GBGame *pGame) {
+      pCurrentGame = pGame;
+      pGame->newGame();
+  }
+#if GAMEBOX_ETHERNET  
+  void GameBox::renderWebPage(EthernetClient &client) {
+    pCurrentGame->renderWebPage(client);
+  }
+#endif
+  void GameBox::draw() const {
+    pCurrentGame->draw();
+  }
+  
+  void GameBox::update() {
+    pCurrentGame->update();
+  }
+
 
 //
 // Ethernet handler
@@ -131,7 +157,7 @@ void handleServer() {
         
         // TODO: Check that this still works
         if (c == '\n' && currentLineIsBlank) {
-          game.renderWebPage(client);
+          gamebox.renderWebPage(client);
           break;
         }
    
@@ -164,15 +190,16 @@ void setup() {
 #endif
 
   gamebox.init();
-   
-  game.newGame();
+  menu.addGame(new GameRunner());
+  
+  gamebox.startMenu();
 }
 
 void loop() {
   handleServer();
     
-  game.draw();
-  game.update();
+  gamebox.draw();
+  gamebox.update();
 }
 
 
