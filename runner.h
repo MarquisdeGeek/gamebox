@@ -6,11 +6,11 @@ class GameRunnerPlayer {
 public:
 
   void newGame();
-  void draw();
-  void drawScore();  
+  void draw() const;
+  void drawScore() const;  
   void update();
-  boolean isJumping();
-  boolean isDead();
+  boolean isJumping() const;
+  boolean isDead() const;
   void jumpUp();  
   void incScore();  
   void kill();
@@ -30,15 +30,15 @@ public:
   
   void newGame();
   void update();
-  boolean isCollision(const int pos);
-  void draw(const int pos);
+  boolean isCollision(const int pos) const;
+  void draw(const int pos) const;
 };
 
 class GameRunnerState {
 public:
 
   void newGame();  
-  void draw();
+  void draw() const;
   void update();
   
  public:
@@ -52,12 +52,12 @@ public:
   GameRunner();
   
   void  	newGame();  
-  void  	draw();  
+  void  	draw() const;  
   void  	update();
-  boolean 	isGameOver();
+  boolean 	isGameOver() const;
     
 #if  GAMEBOX_ETHERNET   
-   void renderWebPage(EthernetClient &client);
+   void renderWebPage(EthernetClient &client) const;
 #endif
 
 

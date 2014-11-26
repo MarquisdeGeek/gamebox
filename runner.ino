@@ -30,7 +30,7 @@ namespace {
     score = 0;
   }
   
-  void GameRunnerPlayer::draw() {
+  void GameRunnerPlayer::draw() const {
     lcd.setCursor(0,y);
     lcd.print(dead ? "X" : g_RunnerPlayerAnimation[animIdx]);
     lcd.setCursor(0,1-y);
@@ -39,7 +39,7 @@ namespace {
     drawScore();
   }
 
-  void GameRunnerPlayer::drawScore() {
+  void GameRunnerPlayer::drawScore() const {
     lcd.setCursor(7,0);
     lcd.print("Score ");
   
@@ -63,11 +63,11 @@ namespace {
     }
   }
   
-  boolean GameRunnerPlayer::isJumping() {
+  boolean GameRunnerPlayer::isJumping() const {
     return jump ? true : false;
   }
   
-  boolean GameRunnerPlayer::isDead() {
+  boolean GameRunnerPlayer::isDead() const {
     return dead ? true : false;
   }
  
@@ -104,11 +104,11 @@ namespace {
   void  GameRunnerMap::update() {
   }
   
-  boolean GameRunnerMap::isCollision(const int pos) {
+  boolean GameRunnerMap::isCollision(const int pos) const {
      return g_RunnerMapData[pos&0xf] ? true : false;
   }
  
-  void GameRunnerMap::draw(const int pos) {
+  void GameRunnerMap::draw(const int pos) const {
     lcd.setCursor(0,1);
     for(int i=0;i<16;++i) {
         lcd.print(g_RunnerMapData[(pos+i)&0xf] ? "o" : " ");
@@ -124,7 +124,7 @@ namespace {
     pos = 0;
   }
   
-  void  GameRunnerState::draw() {
+  void  GameRunnerState::draw() const {
   }
 
   void GameRunnerState::update() {        
@@ -162,7 +162,7 @@ namespace {
       ++gamesPlayed;
   }
   
-  void  GameRunner::draw() {
+  void  GameRunner::draw() const {
     if (!isGameOver()) {
       gamemap.draw(state.pos);
       player.draw();
@@ -211,12 +211,12 @@ namespace {
      }
    }
    
-   boolean GameRunner::isGameOver() {
+   boolean GameRunner::isGameOver() const {
      return player.isDead();
    }
     
 #if  GAMEBOX_ETHERNET   
-   void GameRunner::renderWebPage(EthernetClient &client) {
+   void GameRunner::renderWebPage(EthernetClient &client) const {
     // send a standard http response header
     client.println("HTTP/1.1 200 OK");
     client.println("Content-Type: text/html");

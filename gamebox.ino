@@ -71,13 +71,13 @@ const int GB_NOTE_C6 = 1047;
     delay(2000);
   }    
   
-  void GameBox::playSound(const int pitch, const int duration) {
+  void GameBox::playSound(const int pitch, const int duration) const {
 #if GAMEBOX_AUDIO
     tone(pinSpeaker, pitch, duration);
 #endif
   }
   
-  void GameBox::playTune(const int *pMelody) {
+  void GameBox::playTune(const int *pMelody) const {
 #if GAMEBOX_AUDIO
     while(*pMelody) {
        int notePitch = pMelody[0];
@@ -96,11 +96,11 @@ const int GB_NOTE_C6 = 1047;
 #endif
    }
     
-  boolean GameBox::isLeftButtonDown() {
+  boolean GameBox::isLeftButtonDown() const {
     return analogRead(pinButtonLeft) > 10;
   }
 
-  boolean GameBox::isRightButtonDown() {
+  boolean GameBox::isRightButtonDown() const {
     return digitalRead(pinButtonRight);
   }
   

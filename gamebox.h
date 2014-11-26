@@ -10,10 +10,10 @@ class GameBox {
 public:
   
   void init();
-  void playSound(const int pitch, const int duration);  
-  void playTune(const int *pMelody);    
-  boolean isLeftButtonDown();
-  boolean isRightButtonDown();
+  void playSound(const int pitch, const int duration) const;  
+  void playTune(const int *pMelody) const;    
+  boolean isLeftButtonDown() const;
+  boolean isRightButtonDown() const;
   
 };
 
