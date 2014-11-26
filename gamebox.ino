@@ -113,7 +113,15 @@ const int GB_NOTE_C6 = 1047;
   boolean GameBox::isRightButtonDown() const {
     return digitalRead(pinButtonRight);
   }
-  
+    
+  boolean GameBox::wasLeftButtonPressed() const {
+    return !wasLeft && isLeftButtonDown();
+  }
+
+  boolean GameBox::wasRightButtonPressed() const {
+    return !wasRight && isRightButtonDown();
+  }
+ 
   void GameBox::startMenu() {
     startGame(&menu);
   }
@@ -132,7 +140,11 @@ const int GB_NOTE_C6 = 1047;
   }
   
   void GameBox::update() {
+    
     pCurrentGame->update();
+
+    wasLeft = gamebox.isLeftButtonDown();
+    wasRight = gamebox.isRightButtonDown();
   }
 
 

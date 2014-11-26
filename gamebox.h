@@ -21,6 +21,8 @@ public:
   void playTune(const int *pMelody) const;    
   boolean isLeftButtonDown() const;
   boolean isRightButtonDown() const;
+  boolean wasLeftButtonPressed() const;
+  boolean wasRightButtonPressed() const;
   //
 #if GAMEBOX_ETHERNET  
   void renderWebPage(EthernetClient &client);
@@ -33,7 +35,9 @@ public:
   void startGame(GBGame *pGame);
 
 protected:
-  GBGame *    pCurrentGame; 
+  GBGame *     pCurrentGame; 
+  boolean      wasLeft;
+  boolean      wasRight;
 };
 
 #endif	// GAMEBOX_HPP

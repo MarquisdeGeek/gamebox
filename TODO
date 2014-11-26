@@ -1,7 +1,4 @@
 
-+ Prevent the player from hammering the jump button to stay in the air all the time
-+ Add pressed and released methods to stop re-triggers when button held down. e.g. menu
-
 + Write second game
 
 Q. Can the LCD handle UDGs?

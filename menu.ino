@@ -48,10 +48,10 @@ void  	GameBoxMenu::draw() const {
 void  	GameBoxMenu::update() {
   refreshLCD = false;
   
-  if (gamebox.isLeftButtonDown()) {
+  if (gamebox.wasLeftButtonPressed()) {
     gamebox.startGame(gameList[currentSelection]);
   }
-  if (gamebox.isRightButtonDown()) {
+  if (gamebox.wasRightButtonPressed()) {
     gamebox.playSound(440, 50);
     gamebox.playSound(880, 30);
     if (++currentSelection == gameCount) {

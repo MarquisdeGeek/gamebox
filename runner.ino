@@ -204,7 +204,7 @@ namespace {
        // don't allow the jump when ply is already in the air
        // TODO: Improve this logic so stop the player hammering the
        // button
-       if (!player.isJumping() && gamebox.isRightButtonDown()) {
+       if (!player.isJumping() && gamebox.wasRightButtonPressed()) {
          player.jumpUp();
        }
        //
