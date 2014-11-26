@@ -1,0 +1,9 @@
+#ifndef GAMEBOX_SETTINGS_HPP
+#define	GAMEBOX_SETTINGS_HPP	1
+
+#define GAMEBOX_ETHERNET    1
+#define GAMEBOX_AUDIO       1
+#define GAMEBOX_TRACE       0
+
+
+#endif	// GAMEBOX_SETTINGS_HPP
