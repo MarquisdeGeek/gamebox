@@ -14,7 +14,7 @@
 #include "gamebox.h"
 #include "menu.h"
 #include "runner.h"
-#include "game2.h"
+#include "hangman.h"
 
 
 //
@@ -57,9 +57,14 @@ const int GB_NOTE_C6 = 1047;
 
 
   void GameBox::init() {
+#if GAMEBOX_TRACE
     Serial.begin(9600);
+#endif
     log("GameBox.init");
-    
+
+    wasLeft = false;
+    wasRight = false;
+   
     lcd.begin(16, 2);
   
     pinMode(pinButtonLeft, INPUT); 
@@ -203,7 +208,7 @@ void setup() {
 
   gamebox.init();
   menu.addGame(new GameRunner());
-  menu.addGame(new GameUnknown());
+  menu.addGame(new GameHangman());
 
   gamebox.startMenu();
 }
