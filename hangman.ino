@@ -115,9 +115,9 @@ void  	GameHangman::drawSelectionWheel() const {
   lcd.print('<');  // indicate to the player that pressing the left button changes the wheel
  
   lcd.setCursor(7,1);
-  lcd.print('[');
+  lcd.print('_');
   lcd.print((char)(alphabetOrder[cursorPosition] + 'A'));
-  lcd.print(']');
+  lcd.print('_');
  
   char offset;
   for(int i=1;i<6;++i) {
